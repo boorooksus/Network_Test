@@ -44,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
                     System.out.println(("Input: " + number));
                     System.out.println(("Size: " + Integer.BYTES));
 
-
+                    // 같은 데이터를 두 개 전송
+                    dos.writeInt(number);
                     dos.writeInt(number);
 
                     socket.close();

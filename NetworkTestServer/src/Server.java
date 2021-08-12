@@ -25,9 +25,12 @@ public class Server {
             DataInputStream dis = new DataInputStream(socket.getInputStream());
             DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
 
-            // 받은 정보
+            // 같은 데이터를 두 개 받음
             int received = dis.readInt();
+            int received2 = dis.readInt();
+
             System.out.println("received: " + received);
+            System.out.println("received2: " + received2);
 
             if(received == 0){
                 mRun = false;
