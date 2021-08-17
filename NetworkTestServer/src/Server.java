@@ -22,15 +22,15 @@ public class Server {
             Socket socket = server.accept();
             System.out.println("Connected...");
 
-            DataInputStream dis = new DataInputStream(socket.getInputStream());
-            DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+            DataInputStream dis
+                    = new DataInputStream(socket.getInputStream());
 
-            // 같은 데이터를 두 개 받음
+            // 데이터를 받음
             int received = dis.readInt();
-            int received2 = dis.readInt();
+            //int received2 = dis.readInt();
 
             System.out.println("received: " + received);
-            System.out.println("received2: " + received2);
+            //System.out.println("received2: " + received2);
 
             if(received == 0){
                 mRun = false;

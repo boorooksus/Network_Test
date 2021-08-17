@@ -1,7 +1,9 @@
 package com.example.networktestclient;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     class RunningAppsThread extends Thread {
 
 
+        @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
         public void run() {
 
@@ -37,16 +40,16 @@ public class MainActivity extends AppCompatActivity {
 
                     Socket socket = new Socket(ipAddress.getIpAddress(), 5000);
 
-                    DataInputStream dis = new DataInputStream(socket.getInputStream());
-                    DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-
                     int number = Integer.parseInt(text.toString());
                     System.out.println(("Input: " + number));
                     System.out.println(("Size: " + Integer.BYTES));
 
-                    // 같은 데이터를 두 개 전송
+                    DataOutputStream dos
+                            = new DataOutputStream(socket.getOutputStream());
+
+                    // 데이터 전송
                     dos.writeInt(number);
-                    dos.writeInt(number);
+                    //dos.writeInt(number);
 
                     socket.close();
                 } catch (Exception e) {
